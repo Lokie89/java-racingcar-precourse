@@ -53,17 +53,24 @@ public class RacingCars {
     private String getNames(List<RacingCar> racingCars) {
         StringBuilder sb = new StringBuilder();
         for (RacingCar racingCar : racingCars) {
-            sb.append(",");
+            sb.append(", ");
             sb.append(racingCar.getName());
         }
 
-        return sb.substring(1);
+        return sb.substring(2);
     }
 
     public void print() {
         for (RacingCar racingCar : racingCars) {
             racingCar.print();
             System.out.println();
+        }
+        System.out.println();
+    }
+
+    public void run() {
+        for (RacingCar racingCar : racingCars) {
+            racingCar.move(RacingCarRandomNumberGenerator.generate());
         }
     }
 
