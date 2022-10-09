@@ -15,7 +15,7 @@ public class RaceStarter {
         Race race;
 
         while (true) {
-            System.out.println("경주 할 자동차 이름 (이름은 쉼표(,) 기준으로 구분)");
+            System.out.println(PrintMessage.INPUT_RACING_CAR_NAME);
             String names = Console.readLine();
             try {
                 race = Race.from(names);
@@ -26,13 +26,13 @@ public class RaceStarter {
         }
 
         while (true) {
-            System.out.println("시도할 회수");
+            System.out.println(PrintMessage.INPUT_RACING_CAR_TRY_COUNT);
             String tryCount = Console.readLine();
             try {
                 race.start(Integer.parseInt(tryCount));
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("[ERROR] 시도 횟수는 숫자여야 한다.");
+                System.out.println(PrintMessage.TRY_COUNT_NUMBER_FORMAT_ERROR);
             }
         }
     }

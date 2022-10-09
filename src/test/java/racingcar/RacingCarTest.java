@@ -1,6 +1,7 @@
 package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -20,13 +21,31 @@ public class RacingCarTest {
         RacingCar car = new RacingCar(name);
     }
 
-    @DisplayName("잘못된 RacingCar 이름 생성")
-    @ValueSource(strings = {"다섯자이상이다아", "콤마추가,", ""})
-    @ParameterizedTest
-    void createErrorTest(String name) {
+    @DisplayName("다섯글자 이상 RacingCar 이름 생성")
+    @Test
+    void createLengthErrorTest() {
+        String name = "다섯자이상이다아";
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new RacingCar(name))
-                .withMessageContaining("[ERROR] 잘못된 이름 입니다.");
+                .withMessageContaining(PrintMessage.NAME_OUT_OF_LENGTH_ERROR.getMessage());
+    }
+
+    @DisplayName("콤마 RacingCar 이름 생성")
+    @Test
+    void createContainErrorTest() {
+        String name = "콤마추가,";
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new RacingCar(name))
+                .withMessageContaining(PrintMessage.NAME_CONTAIN_SPLIT_REGEX_ERROR.getMessage());
+    }
+
+    @DisplayName("비어있는 RacingCar 이름 생성")
+    @Test
+    void createEmptyErrorTest() {
+        String name = "";
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new RacingCar(name))
+                .withMessageContaining(PrintMessage.NAME_EMPTY_ERROR.getMessage());
     }
 
     @DisplayName("RacingCar 전진 기능 테스트")

@@ -34,6 +34,6 @@ public class Race {
     }
 
     private void printWinners() {
-        System.out.println("최종 우승자 : " + racingCars.pickWinners());
+        System.out.printf(PrintMessage.WINNER.getMessage(), racingCars.pickWinners());
     }
 }

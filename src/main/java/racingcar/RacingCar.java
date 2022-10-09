@@ -20,10 +20,14 @@ public class RacingCar implements Comparable<RacingCar> {
     }
 
     private void validateName(String name) {
-        if (isOverLengthName(name)
-                || hasSplitThing(name)
-                || isEmptyName(name)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 이름 입니다.");
+        if (isOverLengthName(name)) {
+            throw new IllegalArgumentException(PrintMessage.NAME_OUT_OF_LENGTH_ERROR.getMessage());
+        }
+        if (hasSplitThing(name)) {
+            throw new IllegalArgumentException(PrintMessage.NAME_CONTAIN_SPLIT_REGEX_ERROR.getMessage());
+        }
+        if (isEmptyName(name)) {
+            throw new IllegalArgumentException(PrintMessage.NAME_EMPTY_ERROR.getMessage());
         }
     }
 
