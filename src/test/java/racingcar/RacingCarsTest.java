@@ -36,6 +36,6 @@ public class RacingCarsTest {
         racingCar3.move(3);
         RacingCars racingCars = RacingCars.of(racingCar1, racingCar2, racingCar3);
 
-        assertThat(racingCars.pickWinners()).isEqualTo("오성록,우승자");
+        assertThat(racingCars.pickWinners()).isEqualTo("오성록, 우승자");
     }
 }
