@@ -4,7 +4,7 @@ package racingcar;
  * @author SeongRok.Oh
  * @since 2022/10/09
  */
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
 
     private static final int NAME_MAX_LENGTH = 5;
     private static final String SPLIT_REGEX = ",";
@@ -51,5 +51,14 @@ public class RacingCar {
 
     public int getMileage() {
         return mileage;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int compareTo(RacingCar other) {
+        return this.mileage - other.mileage;
     }
 }
