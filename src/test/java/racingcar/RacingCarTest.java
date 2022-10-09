@@ -30,15 +30,6 @@ public class RacingCarTest {
                 .withMessageContaining(PrintMessage.NAME_OUT_OF_LENGTH_ERROR.getMessage());
     }
 
-    @DisplayName("콤마 RacingCar 이름 생성")
-    @Test
-    void createContainErrorTest() {
-        String name = "콤마추가,";
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new RacingCar(name))
-                .withMessageContaining(PrintMessage.NAME_CONTAIN_SPLIT_REGEX_ERROR.getMessage());
-    }
-
     @DisplayName("비어있는 RacingCar 이름 생성")
     @Test
     void createEmptyErrorTest() {

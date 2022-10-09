@@ -7,7 +7,6 @@ package racingcar;
 public class RacingCar implements Comparable<RacingCar> {
 
     private static final int NAME_MAX_LENGTH = 5;
-    private static final String SPLIT_REGEX = ",";
     private static final int MIN_POWER_FOR_MOVE = 4;
 
     private final String name;
@@ -23,9 +22,6 @@ public class RacingCar implements Comparable<RacingCar> {
         if (isOverLengthName(name)) {
             throw new IllegalArgumentException(PrintMessage.NAME_OUT_OF_LENGTH_ERROR.getMessage());
         }
-        if (hasSplitThing(name)) {
-            throw new IllegalArgumentException(PrintMessage.NAME_CONTAIN_SPLIT_REGEX_ERROR.getMessage());
-        }
         if (isEmptyName(name)) {
             throw new IllegalArgumentException(PrintMessage.NAME_EMPTY_ERROR.getMessage());
         }
@@ -33,10 +29,6 @@ public class RacingCar implements Comparable<RacingCar> {
 
     private boolean isOverLengthName(String name) {
         return name.length() > NAME_MAX_LENGTH;
-    }
-
-    private boolean hasSplitThing(String name) {
-        return name.contains(SPLIT_REGEX);
     }
 
     private boolean isEmptyName(String name) {

@@ -9,11 +9,10 @@ public enum PrintMessage {
     INPUT_RACING_CAR_TRY_COUNT("시도할 회수"),
     TRY_COUNT_NUMBER_FORMAT_ERROR("[ERROR] 시도 횟수는 숫자여야 한다."),
     NAME_OUT_OF_LENGTH_ERROR("[ERROR] 이름은 5글자를 넘을 수 없습니다."),
-    NAME_CONTAIN_SPLIT_REGEX_ERROR("[ERROR] 이름에는 ',' 를 포함할 수 없습니다."),
     NAME_EMPTY_ERROR("[ERROR] 이름은 공백일 수 없습니다."),
-    WINNER("최종 우승자 : %s")
+    WINNER("최종 우승자 : %s"),
     ;
-    private String message;
+    private final String message;
 
     PrintMessage(String message) {
         this.message = message;
