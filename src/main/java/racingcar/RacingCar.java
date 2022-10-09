@@ -61,4 +61,12 @@ public class RacingCar implements Comparable<RacingCar> {
     public int compareTo(RacingCar other) {
         return this.mileage - other.mileage;
     }
+
+    public void print() {
+        System.out.print(name);
+        System.out.print(" : ");
+        for (int i = 0; i < mileage; i++) {
+            System.out.print("-");
+        }
+    }
 }

@@ -60,5 +60,12 @@ public class RacingCars {
         return sb.substring(1);
     }
 
+    public void print() {
+        for (RacingCar racingCar : racingCars) {
+            racingCar.print();
+            System.out.println();
+        }
+    }
+
 
 }
