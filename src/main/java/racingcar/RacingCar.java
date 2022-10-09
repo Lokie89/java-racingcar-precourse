@@ -8,12 +8,15 @@ public class RacingCar {
 
     private static final int NAME_MAX_LENGTH = 5;
     private static final String SPLIT_REGEX = ",";
+    private static final int MIN_POWER_FOR_MOVE = 4;
 
     private final String name;
+    private int mileage;
 
     public RacingCar(String name) {
         validateName(name);
         this.name = name;
+        this.mileage = 0;
     }
 
     private void validateName(String name) {
@@ -34,5 +37,19 @@ public class RacingCar {
 
     private boolean isEmptyName(String name) {
         return name.isEmpty();
+    }
+
+    public void move(int power) {
+        if (isMovable(power)) {
+            mileage++;
+        }
+    }
+
+    private boolean isMovable(int power) {
+        return power >= MIN_POWER_FOR_MOVE;
+    }
+
+    public int getMileage() {
+        return mileage;
     }
 }

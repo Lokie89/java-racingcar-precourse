@@ -1,9 +1,11 @@
 package racingcar;
 
-import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 /**
  * @author SeongRok.Oh
@@ -25,5 +27,25 @@ public class RacingCarTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new RacingCar(name))
                 .withMessageContaining("[ERROR] 잘못된 이름 입니다.");
+    }
+
+    @DisplayName("RacingCar 전진 기능 테스트")
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    @ParameterizedTest
+    void move(int value) {
+        String name = "원빈";
+        RacingCar car = new RacingCar(name);
+        car.move(value);
+        assertThat(car.getMileage()).isEqualTo(1);
+    }
+
+    @DisplayName("RacingCar 전진 기능 테스트")
+    @ValueSource(ints = {0, 1, 2, 3})
+    @ParameterizedTest
+    void notMove(int value) {
+        String name = "원빈";
+        RacingCar car = new RacingCar(name);
+        car.move(value);
+        assertThat(car.getMileage()).isEqualTo(0);
     }
 }
