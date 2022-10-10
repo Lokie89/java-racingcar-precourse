@@ -58,4 +58,18 @@ public class RacingCarTest {
         car.move(value);
         assertThat(car.getMileage()).isEqualTo(0);
     }
+
+    @DisplayName("RacingCar mileage 같을 시 equals 테스트")
+    @Test
+    void equals() {
+        String name1 = "원빈";
+        RacingCar car1 = new RacingCar(name1);
+        car1.move(7);
+
+        String name2 = "장동건";
+        RacingCar car2 = new RacingCar(name2);
+        car2.move(8);
+
+        assertThat(car1.equals(car2)).isTrue();
+    }
 }

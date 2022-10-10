@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Objects;
+
 /**
  * @author SeongRok.Oh
  * @since 2022/10/09
@@ -45,5 +47,18 @@ public class RacingCar implements Comparable<RacingCar> {
         for (int i = 0; i < mileage; i++) {
             System.out.print("-");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return mileage == racingCar.mileage;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mileage);
     }
 }

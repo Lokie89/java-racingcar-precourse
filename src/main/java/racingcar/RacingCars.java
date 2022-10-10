@@ -47,7 +47,7 @@ public class RacingCars {
     }
 
     private boolean isTie(RacingCar o1, RacingCar o2) {
-        return o1.compareTo(o2) == 0;
+        return o1.equals(o2);
     }
 
     private String getNames(List<RacingCar> racingCars) {
