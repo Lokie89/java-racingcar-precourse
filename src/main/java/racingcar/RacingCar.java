@@ -6,33 +6,14 @@ package racingcar;
  */
 public class RacingCar implements Comparable<RacingCar> {
 
-    private static final int NAME_MAX_LENGTH = 5;
     private static final int MIN_POWER_FOR_MOVE = 4;
 
-    private final String name;
+    private final Racer racer;
     private int mileage;
 
     public RacingCar(String name) {
-        validateName(name);
-        this.name = name;
+        this.racer = Racer.from(name);
         this.mileage = 0;
-    }
-
-    private void validateName(String name) {
-        if (isOverLengthName(name)) {
-            throw new IllegalArgumentException(PrintMessage.NAME_OUT_OF_LENGTH_ERROR.getMessage());
-        }
-        if (isEmptyName(name)) {
-            throw new IllegalArgumentException(PrintMessage.NAME_EMPTY_ERROR.getMessage());
-        }
-    }
-
-    private boolean isOverLengthName(String name) {
-        return name.length() > NAME_MAX_LENGTH;
-    }
-
-    private boolean isEmptyName(String name) {
-        return name.isEmpty();
     }
 
     public void move(int power) {
@@ -50,7 +31,7 @@ public class RacingCar implements Comparable<RacingCar> {
     }
 
     public String getName() {
-        return name;
+        return racer.getName();
     }
 
     @Override
@@ -59,7 +40,7 @@ public class RacingCar implements Comparable<RacingCar> {
     }
 
     public void print() {
-        System.out.print(name);
+        System.out.print(racer.getName());
         System.out.print(" : ");
         for (int i = 0; i < mileage; i++) {
             System.out.print("-");
